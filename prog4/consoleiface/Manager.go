@@ -52,7 +52,7 @@ type Manager struct {
 func New(of jcpc.OutputFactory, bt jcpc.BluetoothManager, opts jcpc.Options, djn jcpc.DeleteJoyconNode) *Manager {
 	m := &Manager{
 		outputFactory: of,
-		deleteJoyconNode: djn
+		deleteJoyconNode: djn,
 		btManager:     bt,
 
 		commandChan:      make(chan string, 1),
