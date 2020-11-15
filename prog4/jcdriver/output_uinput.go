@@ -28,7 +28,7 @@ func getOutputFactory() jcpc.OutputFactory {
 }
 
 
-func getDeleteJoyconNode() {
+func getDeleteJoyconNode() jcpc.DeleteJoyconNode {
     return func(jc jcpc.JoyCon) error {
         dat, err := ioutil.ReadFile("/proc/bus/input/devices")
         if err != nil {
