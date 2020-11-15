@@ -8,6 +8,7 @@ import (
 	"strings"
 	"regexp"
 	"io/ioutil"
+	"os"
 
 	"github.com/Davidc999/joycon/prog4/jcpc"
 	"github.com/Davidc999/joycon/prog4/output"
@@ -42,7 +43,8 @@ func getDeleteJoyconNode() jcpc.DeleteJoyconNode {
         }
         re := regexp.MustCompile(`event\d+`)
         event_used := re.Find([]byte(file_cont[found_ind:]))
-        fmt.Printf("Must delete %q for serial %q\n", event_used, jc.Serial())
+        fmt.Printf("Must delete /dev/input/%q for serial %q\n", event_used, jc.Serial())
+        os.Remove("/dev/input/" + event_used)
         return nil
     }
 }

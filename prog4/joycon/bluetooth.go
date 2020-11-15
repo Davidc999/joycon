@@ -625,6 +625,7 @@ func (jc *joyconBluetooth) handleSPIRead(packet []byte) {
 
 		if true {
 			fmt.Printf("%s: Got factory calibration and button colors\n", jc.serial)
+			fmt.Printf("colors: %d,%d,%d", jc.caseColor.R, jc.caseColor.G, jc.caseColor.B)
 		}
 		fmt.Printf("%s: SPI read returned [%x+%d]\n%s", jc.serial, addr, length, hex.Dump(data))
 	} else if addr == userStickCalibStart && length == userStickCalibLen {
