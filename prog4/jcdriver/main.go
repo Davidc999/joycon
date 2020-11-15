@@ -7,8 +7,8 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/riking/joycon/prog4/consoleiface"
-	"github.com/riking/joycon/prog4/jcpc"
+	"github.com/Davidc999//joycon/prog4/consoleiface"
+	"github.com/Davidc999//joycon/prog4/jcpc"
 )
 
 //this is needed so we can have one flag multiple times, like --invert LV --invert LH

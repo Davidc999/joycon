@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/riking/joycon/prog4/jcpc"
+	"github.com/Davidc999//joycon/prog4/jcpc"
 )
 
 func getBluetoothManager() (jcpc.BluetoothManager, error) {

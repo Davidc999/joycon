@@ -3,7 +3,7 @@ package controller
 import (
 	"fmt"
 
-	"github.com/riking/joycon/prog4/jcpc"
+	"github.com/Davidc999//joycon/prog4/jcpc"
 )
 
 type base struct {

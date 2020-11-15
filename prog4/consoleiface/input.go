@@ -10,7 +10,7 @@ import (
 
 	"github.com/chzyer/readline"
 	"github.com/pkg/errors"
-	"github.com/riking/joycon/prog4/jcpc"
+	"github.com/Davidc999//joycon/prog4/jcpc"
 )
 
 func filterCtrlZ(r rune) (rune, bool) {

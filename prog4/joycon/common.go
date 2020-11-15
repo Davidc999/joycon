@@ -4,7 +4,7 @@ import (
 	"context"
 	"math"
 
-	"github.com/riking/joycon/prog4/jcpc"
+	"github.com/Davidc999//joycon/prog4/jcpc"
 )
 
 func notify(jc jcpc.JoyCon, flags int, notify ...jcpc.JoyConNotify) {

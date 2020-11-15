@@ -11,7 +11,7 @@ import (
 	"unsafe"
 
 	"github.com/pkg/errors"
-	"github.com/riking/joycon/prog4/jcpc"
+	"github.com/Davidc999//joycon/prog4/jcpc"
 	"golang.org/x/sys/unix"
 )
 

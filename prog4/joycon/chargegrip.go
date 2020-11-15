@@ -2,7 +2,7 @@ package joycon
 
 import (
 	"github.com/GeertJohan/go.hid"
-	"github.com/riking/joycon/prog4/jcpc"
+	"github.com/Davidc999//joycon/prog4/jcpc"
 )
 
 func NewChargeGrip(handleL, handleR *hid.Device) (jcpc.JoyCon, error) {

@@ -5,8 +5,8 @@ package main
 import (
     "errors"
 
-	"github.com/riking/joycon/prog4/jcpc"
-	"github.com/riking/joycon/prog4/output"
+	"github.com/Davidc999//joycon/prog4/jcpc"
+	"github.com/Davidc999//joycon/prog4/output"
 )
 
 func getOutputFactory() jcpc.OutputFactory {
