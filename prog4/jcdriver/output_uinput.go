@@ -28,19 +28,21 @@ func getOutputFactory() jcpc.OutputFactory {
 }
 
 
-func deleteEventNode(jc jcpc.JoyCon) error {
-    dat, err := ioutil.ReadFile("/proc/bus/input/devices")
-    if err != nil {
-        return err
-    }
-	file_cont := string(dat)
+func getDeleteJoyconNode() {
+    return func(jc jcpc.JoyCon) error {
+        dat, err := ioutil.ReadFile("/proc/bus/input/devices")
+        if err != nil {
+            return err
+        }
+        file_cont := string(dat)
 
-	found_ind := strings.Index(file_cont, jc.Serial())
-	if found_ind == -1 {
-	    return errors.New("Node not found for the controller")
+        found_ind := strings.Index(file_cont, jc.Serial())
+        if found_ind == -1 {
+            return errors.New("Node not found for the controller")
+        }
+        re := regexp.MustCompile(`event\d+`)
+        event_used := re.Find([]byte(file_cont[found_ind:]))
+        fmt.Printf("Must delete %q for serial %q\n", event_used, jc.Serial())
+        return nil
     }
-	re := regexp.MustCompile(`event\d+`)
-	event_used := re.Find([]byte(file_cont[found_ind:]))
-	fmt.Printf("Must delete %q for serial %q\n", event_used, jc.Serial())
-	return nil
 }

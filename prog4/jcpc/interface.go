@@ -72,6 +72,7 @@ type Output interface {
 }
 
 type OutputFactory func(t JoyConType, playerNum int, remap InputRemappingOptions) (Output, error)
+type DeleteJoyconNode func(jc JoyCon) error
 
 type Interface interface {
 	JoyConNotify

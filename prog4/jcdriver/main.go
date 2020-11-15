@@ -33,6 +33,7 @@ func main() {
 	runtime.GOMAXPROCS(8 + runtime.NumCPU())
 
 	of := getOutputFactory()
+	djn := getDeleteJoyconNode()
 	bt, err := getBluetoothManager()
 	if err != nil {
 		fmt.Println("[FATAL] Could not start up bluetooth manager:", err)
@@ -45,7 +46,7 @@ func main() {
 		fmt.Println("Error when parsing flags:", err.Error())
 		os.Exit(1)
 	}
-	iface := consoleiface.New(of, bt, *opts)
+	iface := consoleiface.New(of, bt, *opts, djn)
 	iface.Run()
 
 	defer func() {

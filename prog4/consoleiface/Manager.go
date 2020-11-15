@@ -7,7 +7,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Davidc999/joycon/prog4/jcdriver"
 	"github.com/GeertJohan/go.hid"
 	"github.com/Davidc999/joycon/prog4/controller"
 	"github.com/Davidc999/joycon/prog4/jcpc"
@@ -37,6 +36,7 @@ type Manager struct {
 	wantReconnect []jcpc.JoyCon
 
 	outputFactory jcpc.OutputFactory
+	deleteJoyconNode jcpc.DeleteJoyconNode
 	btManager     jcpc.BluetoothManager
 
 	commandChan      chan string
@@ -49,9 +49,10 @@ type Manager struct {
 	options jcpc.Options
 }
 
-func New(of jcpc.OutputFactory, bt jcpc.BluetoothManager, opts jcpc.Options) *Manager {
+func New(of jcpc.OutputFactory, bt jcpc.BluetoothManager, opts jcpc.Options, djn jcpc.DeleteJoyconNode) *Manager {
 	m := &Manager{
 		outputFactory: of,
+		deleteJoyconNode: djn
 		btManager:     bt,
 
 		commandChan:      make(chan string, 1),
@@ -221,8 +222,14 @@ func (m *Manager) doPairing_(idx1, idx2 int) {
 		jc1.BindToController(c)
 		jc2.BindToController(c)
 		fmt.Println("[W00T] Running new code!:")
-		main.deleteEventNode(jc1)
-		main.deleteEventNode(jc2)
+		err = m.deleteJoyconNode(jc1)
+		if err != nil {
+		    fmt.Println(err)
+		}
+		err = m.deleteJoyconNode(jc2)
+		if err != nil {
+		    fmt.Println(err)
+		}
 		m.paired = append(m.paired, outputController{
 			c:    c,
 			o:    o,
