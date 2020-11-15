@@ -6,8 +6,8 @@ import (
 	"sort"
 	"sync"
 	"time"
-	"main"
 
+	"github.com/Davidc999/joycon/prog4/jcdriver"
 	"github.com/GeertJohan/go.hid"
 	"github.com/Davidc999/joycon/prog4/controller"
 	"github.com/Davidc999/joycon/prog4/jcpc"
