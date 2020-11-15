@@ -6,6 +6,7 @@ import (
 	"sort"
 	"sync"
 	"time"
+	"main"
 
 	"github.com/GeertJohan/go.hid"
 	"github.com/riking/joycon/prog4/controller"
@@ -219,6 +220,9 @@ func (m *Manager) doPairing_(idx1, idx2 int) {
 		c.BindToOutput(o)
 		jc1.BindToController(c)
 		jc2.BindToController(c)
+		fmt.Println("[W00T] Running new code!:")
+		main.deleteEventNode(jc1)
+		main.deleteEventNode(jc2)
 		m.paired = append(m.paired, outputController{
 			c:    c,
 			o:    o,
@@ -255,24 +259,24 @@ func (m *Manager) attemptPairing() {
 	var didPair []int
 
 	for idx, up := range m.unpaired {
-		if up.curButtons.HasAll(buttonsSLSR_L) || up.curButtons.HasAll(buttonsSLSR_R) {
+		if up.curButtons.HasAll(buttonsSLSR_L) || up.curButtons.HasAll(buttonsSLSR_R) { // Single L/R
 			m.doPairing_(idx, -1)
 			didPair = append(didPair, idx)
-		} else if up.curButtons.HasAll(buttonsLR) || up.curButtons.HasAll(buttonsZLZR) {
+		} else if up.curButtons.HasAll(buttonsLR) || up.curButtons.HasAll(buttonsZLZR) { // Pro controller
 			m.doPairing_(idx, -1)
 			didPair = append(didPair, idx)
-		} else if up.curButtons.HasAny(buttonsLZL) {
+		} else if up.curButtons.HasAny(buttonsLZL) { // Just L or ZL
 		secondloop:
-			for idx2, up2 := range m.unpaired {
-				if idx == idx2 {
+			for idx2, up2 := range m.unpaired { // Try to find an R in the unpaired list
+				if idx == idx2 { // If idx2 is the current controller, go to next unpaired
 					continue
 				}
-				for _, usedIdx := range didPair {
+				for _, usedIdx := range didPair { // If idx2 was paired in this event, goto next unpaired
 					if idx2 == usedIdx {
 						continue secondloop
 					}
 				}
-				if up2.curButtons.HasAny(buttonsRZR) {
+				if up2.curButtons.HasAny(buttonsRZR) { // If idx2 has R or ZR pressed, try to pair idx and idx2!
 					m.doPairing_(idx, idx2)
 					didPair = append(didPair, idx, idx2)
 					break
