@@ -8,7 +8,7 @@ The current main code, written in Go, lives in the `prog4/jcdriver` folder, as i
 ```
 sudo apt install libudev-dev go git
 
-go get -u github.com/Davidc999//joycon/prog4/jcdriver # Download and build the program
+go get -u github.com/Davidc999/joycon/prog4/jcdriver # Download and build the program
 cp $(go env GOBIN)/jcdriver ./jcdriver # Copy the binary out of where Go drops it
 sudo ./jcdriver # Run the driver
 ```

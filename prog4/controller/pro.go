@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Davidc999//joycon/prog4/jcpc"
+	"github.com/Davidc999/joycon/prog4/jcpc"
 )
 
 type pro struct {

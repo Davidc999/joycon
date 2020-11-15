@@ -3,7 +3,7 @@ package output
 import (
 	"fmt"
 
-	"github.com/Davidc999//joycon/prog4/jcpc"
+	"github.com/Davidc999/joycon/prog4/jcpc"
 )
 
 type consoleOutput struct {

@@ -9,9 +9,9 @@ import (
 	"main"
 
 	"github.com/GeertJohan/go.hid"
-	"github.com/Davidc999//joycon/prog4/controller"
-	"github.com/Davidc999//joycon/prog4/jcpc"
-	"github.com/Davidc999//joycon/prog4/joycon"
+	"github.com/Davidc999/joycon/prog4/controller"
+	"github.com/Davidc999/joycon/prog4/jcpc"
+	"github.com/Davidc999/joycon/prog4/joycon"
 )
 
 const maxControllerCount = 4
