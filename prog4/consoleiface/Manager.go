@@ -180,6 +180,13 @@ func (m *Manager) doPairing_(idx1, idx2 int) {
 		c := controller.OneJoyCon(jc, m)
 		c.BindToOutput(o)
 		jc.BindToController(c)
+
+		fmt.Println("[W00T] Running new code!:")
+		err = m.deleteJoyconNode(jc)
+		if err != nil {
+		    fmt.Println(err)
+		}
+
 		m.paired = append(m.paired, outputController{
 			c:    c,
 			o:    o,
@@ -197,6 +204,13 @@ func (m *Manager) doPairing_(idx1, idx2 int) {
 		c := controller.Pro(jc, m)
 		c.BindToOutput(o)
 		jc.BindToController(c)
+
+		fmt.Println("[W00T] Running new code!:")
+		err = m.deleteJoyconNode(jc)
+		if err != nil {
+		    fmt.Println(err)
+		}
+
 		m.paired = append(m.paired, outputController{
 			c:    c,
 			o:    o,
@@ -221,6 +235,7 @@ func (m *Manager) doPairing_(idx1, idx2 int) {
 		c.BindToOutput(o)
 		jc1.BindToController(c)
 		jc2.BindToController(c)
+
 		fmt.Println("[W00T] Running new code!:")
 		err = m.deleteJoyconNode(jc1)
 		if err != nil {
@@ -230,6 +245,7 @@ func (m *Manager) doPairing_(idx1, idx2 int) {
 		if err != nil {
 		    fmt.Println(err)
 		}
+		
 		m.paired = append(m.paired, outputController{
 			c:    c,
 			o:    o,
