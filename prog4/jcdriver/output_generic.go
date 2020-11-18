@@ -15,6 +15,6 @@ func getOutputFactory() jcpc.OutputFactory {
 	}
 }
 
-func deleteEventNode(jc jcpc.JoyCon) error {
+func DeleteJoyconNode(jc jcpc.JoyCon) error {
     return errors.New("Not implemented!")
 }
