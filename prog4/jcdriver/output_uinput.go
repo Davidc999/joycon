@@ -44,7 +44,7 @@ func getDeleteJoyconNode() jcpc.DeleteJoyconNode {
         re := regexp.MustCompile(`event\d+`)
         event_used := re.Find([]byte(file_cont[found_ind:]))
         fmt.Printf("Must delete /dev/input/%q for serial %q\n", event_used, jc.Serial())
-        os.Remove("/dev/input/" + event_used)
+        os.Remove("/dev/input/" + fmt.Sprintf("%q", event_used))
         return nil
     }
 }
